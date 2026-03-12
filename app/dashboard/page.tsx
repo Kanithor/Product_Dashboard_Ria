@@ -260,6 +260,20 @@ export default function DashboardPage() {
                     </span>
                 </div>
                 </th>
+
+                <th 
+                className="p-4 font-semibold text-slate-700 text-right cursor-pointer hover:bg-slate-100 transition-all select-none"
+                onClick={() => requestSort('rating')}
+                >
+                <div className="flex items-center justify-end gap-1">
+                    Rating 
+                    <span className="text-slate-300 w-4">
+                    {sortConfig?.key === 'rating' 
+                        ? (sortConfig.direction === 'asc' ? '↑' : '↓') 
+                        : '↕'}
+                    </span>
+                </div>
+                </th>
             </tr>
             </thead>
           <tbody>
@@ -278,6 +292,7 @@ export default function DashboardPage() {
                 <td className={`p-4 text-right font-bold ${product.stock < 10 ? 'text-red-500' : 'text-slate-400'}`}>
                   {product.stock}
                 </td>
+                <td className="p-4 text-right text-slate-500 capitalize">{product.rating}</td>
               </tr>
             ))}
           </tbody>
