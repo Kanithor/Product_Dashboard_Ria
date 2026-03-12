@@ -1,6 +1,8 @@
+'use client'; // Using client-side fetch for easier interactivity later
+
 import Image from "next/image";
 
-export default function Home() {
+/*export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
@@ -61,5 +63,77 @@ export default function Home() {
         </div>
       </main>
     </div>
+  );
+}
+*/
+
+
+import { useEffect, useState } from 'react';
+
+export default function Dashboard() {
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div className="p-10 animate-pulse">Loading Insights...</div>;
+
+  return (
+    <main className="p-8 max-w-7xl mx-auto space-y-8">
+      <header>
+        <h1 className="text-3xl font-bold">Product Insights</h1>
+        <p className="text-slate-500">Internal Catalog Overview</p>
+      </header>
+
+      {/* --- INSIGHTS SECTION --- */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-6 bg-white border rounded-xl shadow-sm">
+          <p className="text-sm text-slate-500">Avg. Product Price</p>
+          <p className="text-2xl font-bold">${data.insights.averagePrice}</p>
+        </div>
+        <div className="p-6 bg-white border rounded-xl shadow-sm">
+          <p className="text-sm text-slate-500">Total Catalog Items</p>
+          <p className="text-2xl font-bold">{data.insights.totalProducts}</p>
+        </div>
+        <div className="p-6 bg-red-50 border border-red-100 rounded-xl shadow-sm">
+          <p className="text-sm text-red-600">Low Stock Alerts</p>
+          <p className="text-2xl font-bold text-red-700">{data.insights.lowStockCount}</p>
+        </div>
+      </section>
+
+      {/* --- LIST VIEW --- */}
+      <section className="bg-white border rounded-xl overflow-hidden">
+        <table className="w-full text-left">
+          <thead className="bg-slate-50 border-b">
+            <tr>
+              <th className="p-4 font-semibold">Product</th>
+              <th className="p-4 font-semibold">Category</th>
+              <th className="p-4 font-semibold">Price</th>
+              <th className="p-4 font-semibold">Stock</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.products.slice(0, 10).map((p: any) => (
+              <tr key={p.id} className="border-b hover:bg-slate-50 cursor-pointer transition">
+                <td className="p-4 flex items-center gap-3">
+                  <img src={p.thumbnail} className="w-10 h-10 rounded object-cover" alt="" />
+                  <span className="font-medium">{p.title}</span>
+                </td>
+                <td className="p-4 capitalize">{p.category}</td>
+                <td className="p-4">${p.price}</td>
+                <td className="p-4">{p.stock}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    </main>
   );
 }
