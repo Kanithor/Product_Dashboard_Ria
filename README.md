@@ -3,28 +3,7 @@ Technical test for Product Engineer DevOps role.
 
 ## Access through the web
 
-Just go to `https://productdashboardria.vercel.app/dashboard` 
-
-## Run app locally
-
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000/dashboard](http://localhost:3000/dashboard) to see the page built for the test.
-
-## Run with Docker
-```bash
-docker build -t dashboard-app .
-docker run -p 3000:3000 dashboard-app
-```
-
-## Run unit tests
-```bash
-npm run test
-```
+Just go to [https://productdashboardria.vercel.app/dashboard](https://productdashboardria.vercel.app/dashboard) 
 
 # Requested Software Details
 This dashboard was developed to be useful for an internal stakeholder working on a sales company. The decisions made behind the main elements of the app are having in mind 3 pillars for better decision making: Money (Price), Inventory (Stock Quantity), and Quality (Ratings).
@@ -57,8 +36,12 @@ Here's the explanation of every section of the page and why it was built that wa
 
 [x] Implemented 2 unit and integration tests with Jest/React testig library.
 
+[x] Added simple CI workflow for github Actions.
+
 ## Limitations
 - The most important: everything is client side rendered, red flag for a proffesional and public app (most of the cases).
+
+- Only CI implemented, CD is pending.
 
 - Lack of persistent state meaning if you refresh you lost all filtering and sorting effects.
 
@@ -76,3 +59,25 @@ Here's the explanation of every section of the page and why it was built that wa
 - Low stock dynamic card on click showing the matching products
 
 - Server side filtering adding query params.
+
+## Run app locally
+
+#### Run the development server:
+
+```bash
+npm run dev
+```
+
+#### Or run with Docker:
+
+```bash
+docker build -t dashboard-app .
+docker run -p 3000:3000 dashboard-app
+```
+
+Open [http://localhost:3000/dashboard](http://localhost:3000/dashboard) to see the page built for the test.
+
+## Run unit tests
+```bash
+npm run test
+```
