@@ -11,6 +11,17 @@ npm run dev
 
 Open [http://localhost:3000/dashboard](http://localhost:3000/dashboard) to see the page built for the test.
 
+## Run with Docker
+```bash
+docker build -t dashboard-app .
+docker run -p 3000:3000 dashboard-app
+```
+
+## Run unit tests
+```bash
+npm run test
+```
+
 # Requested Software Details
 This dashboard was developed to be useful for an internal stakeholder working on a sales company. The decisions made behind the main elements of the app are having in mind 3 pillars for better decision making: Money (Price), Inventory (Stock Quantity), and Quality (Ratings).
 
@@ -37,3 +48,7 @@ Here's the explanation of every section of the page and why it was built that wa
 [x] Dashboard UI at `/dashboard` with dynamic KPI cards.
 
 [x] Next.js App Router structure used instead of Pages Router.
+
+[x] Dockerization with multi stage builds.
+
+[x] Implemented 2 unit and integration tests with Jest/React testig library.
