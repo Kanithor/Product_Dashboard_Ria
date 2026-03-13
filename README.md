@@ -1,37 +1,39 @@
-# Product_Dashboard_Ria
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Product Dashboard Ria Money Transfer
+Technical test for Product Engineer DevOps role.
 
-## Getting Started
+## Run app locally
 
-First, run the development server:
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/dashboard](http://localhost:3000/dashboard) to see the page built for the test.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Requested Software Details
+This dashboard was developed to be useful for an internal stakeholder working on a sales company. The decisions made behind the main elements of the app are having in mind 3 pillars for better decision making: Money (Price), Inventory (Stock Quantity), and Quality (Ratings).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Here's the explanation of every section of the page and why it was built that way:
+- A first row of 3 dynamic cards, showing info about the products listed on the table with what's more important for the stakeholder at first sight
+    - Average price for the products.
+    - A simple card counting the qty of products.
+    - And finally a card showing qty products with low inventory stock.
+- Second row, less important but to support first row, with searchbox to filter by product name, a price cap slider and a group of button to select every category or a single one.
+- Third we have the main table, where products are listed following the filtering and sorting order, showing image, name, price, rating, category and units in stock. If you click a product, it will show a simple modal with more info.
+## Features
+[x] Modular component design architecture for readability, scalability and maintainability.
 
-## Learn More
+[x] Search, category and price filters all working in sync.
 
-To learn more about Next.js, take a look at the following resources:
+[x] Product detail drawer opens on row click.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[x] 3-Way sorting implemented on table headers (no sort, ascending & descending).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[x] Simple but yet proffesional UI.
 
-## Deploy on Vercel
+[x] API Route exists at `/api/products` with fetched data.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[x] Dashboard UI at `/dashboard` with dynamic KPI cards.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[x] Next.js App Router structure used instead of Pages Router.
