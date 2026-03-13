@@ -1,6 +1,10 @@
 # Product Dashboard Ria Money Transfer
 Technical test for Product Engineer DevOps role.
 
+## Access through the web
+
+Just go to `https://productdashboardria.vercel.app/dashboard` 
+
 ## Run app locally
 
 Run the development server:
@@ -52,3 +56,23 @@ Here's the explanation of every section of the page and why it was built that wa
 [x] Dockerization with multi stage builds.
 
 [x] Implemented 2 unit and integration tests with Jest/React testig library.
+
+## Limitations
+- The most important: everything is client side rendered, red flag for a proffesional and public app (most of the cases).
+
+- Lack of persistent state meaning if you refresh you lost all filtering and sorting effects.
+
+- No backup strategy, if the main data fetch fails there's no other way to access data (database, cache, etc.).
+
+## Stuff to improve
+- Advanced data visualization with some pie chart for easily understanding or even a histogram about sales or stock.
+
+- Add users auth section
+
+- At the price slider
+  - A minimum price filter
+  - A simple input to put the desired price
+
+- Low stock dynamic card on click showing the matching products
+
+- Server side filtering adding query params.
